@@ -7,3 +7,4 @@ out/res/
 output/
 video/
 test/
+__pycache__/

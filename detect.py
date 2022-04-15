@@ -5,6 +5,8 @@ import time
 import datetime
 import utils
 import videoprocess
+import csv
+import sys
 
 
 # 读取文件夹中的每一个视频，并处理各视频的物体出现概率
@@ -391,5 +393,7 @@ if __name__ == '__main__':
     # yolo_detect('./out/a_20220412201110_1.jpg')
     # yolo_detect('./out/c_20220412232540_2.jpg')
     # yolo_detect('./out/d_20220413000320_5.jpg')
-    # yolo_detect_from_video('./video/d.mp4')
-    yolo_detect_from_video_directory('./video/v2')
+    # yolo_detect_from_video('./video/明天.mp4')
+    # yolo_detect_from_video_directory('./video/v2')
+    video_directory = './video/v1'
+    # process_videos_store_in_csv(video_directory, './datasets/test.csv')

@@ -7,6 +7,7 @@ import os
 import datetime
 import utils
 
+
 store_path = './out/'
 
 
@@ -132,9 +133,13 @@ def get_videos_frames_from_directory(video_directory_path):
 
 
 
+
+
+
 if __name__ == '__main__':
     # 单个处理
-    # file_path = './video/a.mp4'
+    # 中文也没有问题
+    # file_path = './video/明天.mp4'
     # file_path = 'D:\\university\\GraduationDesign\\try\\SVM\\video\\d.mp4'
     # videos_images =  get_one_video_frames(file_path)
     # print(len(videos_images))
@@ -142,7 +147,8 @@ if __name__ == '__main__':
 
     # 批量处理
     video_directory_path = './video/v2'
+    csv_file = './datasets/test.csv'
     # video_directory_path = 'D:\\university\\GraduationDesign\\try\\SVM\\video'
-    video_images = get_videos_frames_from_directory(video_directory_path)
-    print(len(video_images))
-    print(len(video_images['a.mp4']))
+    # video_images = get_videos_frames_from_directory(video_directory_path)
+    # print(len(video_images))
+    # print(len(video_images['a.mp4']))

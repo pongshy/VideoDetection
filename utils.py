@@ -29,6 +29,7 @@ def get_file_name(file_path):
 # 获取列表字段
 def get_labels(video_datas):
     labels = ['videoname']
+    # labels = list()
     first_key = ''
     for key in video_datas.keys():
         first_key = key

@@ -8,3 +8,5 @@ output/
 video/
 test/
 __pycache__/
+datasets/t.csv
+datasets/test.csv

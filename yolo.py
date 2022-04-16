@@ -46,7 +46,7 @@ def yolo_detect_from_video_directory(video_direcotry,
     for video_name_key in video_images_directory.keys():
         images = video_images_directory[video_name_key]
         # print('images len:', len(images))
-        video_appear_object_probability[video_name_key] = {}
+
         sum = 0
         # 一个视频中各物体出现的次数
         object_nums = dict(zip(LABELS, [0] * len(LABELS)))
@@ -126,12 +126,14 @@ def yolo_detect_from_video_directory(video_direcotry,
                     # cv2.imwrite('./out/res/{}_{}.jpg'.format('tt', now_time), img, [int(cv2.IMWRITE_JPEG_QUALITY), jpg_quality])
         #  print(object_nums)
         #     print(sum)
+        if sum > 0:
+            video_appear_object_probability[video_name_key] = {}
             objects_probability = dict(zip(LABELS, [0] * len(LABELS)))
             for key in object_nums.keys():
                 objects_probability[key] = object_nums[key] / sum
-        # print('video_name:', video_name)
+            # print('video_name:', video_name)
             video_appear_object_probability[video_name_key] = objects_probability
-            print('video:', video_name_key)
+            # print('video:', video_name_key)
 
     print(len(video_appear_object_probability))
     print(video_appear_object_probability)
@@ -395,5 +397,11 @@ if __name__ == '__main__':
     # yolo_detect('./out/d_20220413000320_5.jpg')
     # yolo_detect_from_video('./video/明天.mp4')
     # yolo_detect_from_video_directory('./video/v2')
-    video_directory = './video/v1'
+    # video_directory = './video/v1'
     # process_videos_store_in_csv(video_directory, './datasets/test.csv')
+    # video_path = './video/concert/tmp.flv'
+    # yolo_detect(video_path)
+
+    # 图像检测
+    video_tmp_path = 'out/ttt1.jpg'
+    yolo_detect(video_tmp_path)

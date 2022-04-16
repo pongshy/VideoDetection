@@ -42,11 +42,12 @@ def get_labels(video_datas):
 
 
 # 获取每个视频的名字与向量 ['a.mp4', 0.11, 0, 0, ...]
-def get_rows(video_datas):
+def get_rows(video_datas, hasVideoName=True):
     datas = []
     for key, value in video_datas.items():
         tmpList = list()
-        tmpList.append(key)
+        if hasVideoName:
+            tmpList.append(key)
         tmpList.extend(list(value.values()))
         datas.append(tmpList)
     return datas

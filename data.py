@@ -46,13 +46,15 @@ def get_datas(datasets_path):
     tag = datas['tag']
     data = datas.iloc[:, 1:-1]
     data = np.array(data)
+    tag = np.array(tag)
+    # print('data.py:', data)
 
     return data, tag
 
 
 if __name__ == '__main__':
     video_directory = './video/sport'
-    csv_file = './datasets/sport.csv'
+    csv_file = './datasets/sport2.csv'
 
     start = time.time()
     process_videos_store_in_csv(video_directory, csv_file)

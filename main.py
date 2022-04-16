@@ -56,6 +56,9 @@ def write_in_csv(file):
     writer.writerows([['1', '我们', '2'], ['2', 'ab', '100'], ['3', 'abc', '4']])
 
 
+
+
+
 if __name__ == '__main__':
     # cancer = datasets.load_breast_cancer()
     #

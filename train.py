@@ -20,7 +20,7 @@ def train(classifier_save_path='', datasets_path='./datasets/sport2.csv'):
 
     kernal = 'rbf'
     # classifier = svm.SVC(kernel='rbf')
-    classifier = svm.SVC(C=30, kernel='rbf', gamma=1, decision_function_shape='ovo')
+    classifier = svm.SVC(C=8, kernel='rbf', gamma=1, decision_function_shape='ovo')
     # classifier = svm.SVC(kernel='poly')
     classifier.fit(X_train, y_train)
 

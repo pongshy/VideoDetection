@@ -10,3 +10,9 @@ test/
 __pycache__/
 datasets/t.csv
 datasets/test.csv
+datasets/sport2.csv
+datasets/sport3.csv
+datasets/sport4.csv
+datasets/v1.csv
+datasets/
+model/

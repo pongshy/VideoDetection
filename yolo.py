@@ -11,12 +11,14 @@ import sys
 
 # 读取文件夹中的每一个视频，并处理各视频的物体出现概率
 def yolo_detect_from_video_directory(video_direcotry,
+                                     frames=10,
                                      label_path='./cfg/coco.names',
                                      config_path='./cfg/yolov3.cfg',
                                      weights_path='./cfg/yolov3.weights',
                                      confidence_thre=0.5,
                                      nms_thre=0.3,
-                                     jpg_quality=80):
+                                     jpg_quality=80
+                                     ):
     print('directory:', video_direcotry)
     # 加载类别标签文件
     LABELS = open(label_path).read().strip().split("\n")
@@ -38,7 +40,7 @@ def yolo_detect_from_video_directory(video_direcotry,
     # 通过视频处理，获取指定帧数的图片（默认为6张）
     # 载入图片并获取其维度
 
-    video_images_directory = videoprocess.get_videos_frames_from_directory(video_direcotry)
+    video_images_directory = videoprocess.get_videos_frames_from_directory(video_direcotry, frames)
     # print('1: ', len(video_images_directory))
     # 所要返回的变量
     video_appear_object_probability = {}
@@ -142,6 +144,7 @@ def yolo_detect_from_video_directory(video_direcotry,
 
 # 读取一个视频，并处理出该视频的物体出现概率
 def yolo_detect_from_video(video_path,
+                           frames=10,
                            label_path='./cfg/coco.names',
                            config_path='./cfg/yolov3.cfg',
                            weights_path='./cfg/yolov3.weights',
@@ -161,7 +164,7 @@ def yolo_detect_from_video(video_path,
     # 通过视频处理，获取指定帧数的图片（默认为6张）
     # 载入图片并获取其维度
     video_name = os.path.basename(video_path)
-    video_images = videoprocess.get_one_video_frames(video_path)
+    video_images = videoprocess.get_one_video_frames(video_path, frames)
     images = video_images[video_name]
     # print(len(images))
 
@@ -359,7 +362,7 @@ def yolo_detect(pathIn='',
     idxs = cv2.dnn.NMSBoxes(boxes, confidences, confidence_thre, nms_thre)
     # 一个图像中各物体出现的次数
     object_nums = dict(zip(LABELS, [0] * len(LABELS)))
-    print(object_nums)
+    # print(object_nums)
     # 确保至少一个边界框
     if len(idxs) > 0:
         # 迭代每个边界框
@@ -395,7 +398,7 @@ if __name__ == '__main__':
     # yolo_detect('./out/a_20220412201110_1.jpg')
     # yolo_detect('./out/c_20220412232540_2.jpg')
     # yolo_detect('./out/d_20220413000320_5.jpg')
-    # yolo_detect_from_video('./video/明天.mp4')
+    yolo_detect_from_video('./video/test/“真把NBA当野球场？” - 1.“真把NBA当野球场？”(Av329019891,P1).mp4')
     # yolo_detect_from_video_directory('./video/v2')
     # video_directory = './video/v1'
     # process_videos_store_in_csv(video_directory, './datasets/test.csv')
@@ -403,5 +406,5 @@ if __name__ == '__main__':
     # yolo_detect(video_path)
 
     # 图像检测
-    video_tmp_path = 'out/ttt1.jpg'
-    yolo_detect(video_tmp_path)
+    # video_tmp_path = './out/soccer.jpg'
+    # yolo_detect(video_tmp_path)

@@ -173,22 +173,22 @@ def get_video_frames(file_path, framenums=6):
 
 
 # 外部调用——通过视频地址获取视频所在帧的图像数据
-def get_one_video_frames(file_path):
+def get_one_video_frames(file_path, frames=10):
     videoname = os.path.basename(file_path)
     videos_images = dict()
 
-    videos_images[videoname] = get_one_video_frames_inself(file_path)
+    videos_images[videoname] = get_one_video_frames_inself(file_path, frames)
     return videos_images
 
 
 # 内部使用通过视频地址获取视频所在帧
-def get_one_video_frames_inself(file_path):
-    images = get_video_frame_store(file_path)
+def get_one_video_frames_inself(file_path, frames=10):
+    images = get_video_frame_store(file_path, frames)
     return images
 
 
 # 处理一个文件夹下所有的视频
-def get_videos_frames_from_directory(video_directory_path):
+def get_videos_frames_from_directory(video_directory_path, frames=10):
     fileordir = os.listdir(video_directory_path)
 
     videos_images = dict()
@@ -199,7 +199,7 @@ def get_videos_frames_from_directory(video_directory_path):
         if os.path.exists(video_path) and os.path.isfile(video_path):
             print(video_path)
             print(videoname)
-            images = get_one_video_frames_inself(video_path)
+            images = get_one_video_frames_inself(video_path, frames)
             videos_images[videoname] = images
     return videos_images
 
@@ -210,7 +210,7 @@ def get_videos_frames_from_directory(video_directory_path):
 if __name__ == '__main__':
     # 单个处理
     # 中文也没有问题
-    file_path = 'video/sport/沉浸式滑雪.mp4'
+    # file_path = 'video/sport/沉浸式滑雪.mp4'
     file_path2 = './video/a.mp4'
     # file_path = './video/明天.mp4'
     # file_path = 'D:\\university\\GraduationDesign\\try\\SVM\\video\\d.mp4'
@@ -226,6 +226,7 @@ if __name__ == '__main__':
     # print(len(video_images))
     # print(len(video_images['a.mp4']))
     # get_video_frames(file_path)
-
-    images = get_one_video_frames(file_path)
-    print(images)
+    file_path = './video/test/“真把NBA当野球场？” - 1.“真把NBA当野球场？”(Av329019891,P1).mp4'
+    # images = get_one_video_frames(file_path, frames=5)
+    images = get_video_frame_store(file_path, framenums=6)
+    # print(images)

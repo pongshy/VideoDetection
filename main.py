@@ -7,6 +7,7 @@ import pickle
 import csv
 import pandas as pd
 import numpy as np
+import datetime
 
 
 def train():
@@ -76,14 +77,21 @@ if __name__ == '__main__':
     # d = dict()
     # print(type(d.keys()))
 
-    data_file = './datasets/t.csv'
+    # data_file = './datasets/t.csv'
     # 读取csv
-    data = pd.read_csv(data_file, header=None)
-    print(data)
-    print(type(data))
-    data = np.array(data)
-    print(data)
-    print(type(data))
+    # data = pd.read_csv(data_file, header=None)
+    # print(data)
+    # print(type(data))
+    # data = np.array(data)
+    # print(data)
+    # print(type(data))
+
+    # 需要自己加\n
+    with open('./log/train.log', 'a') as f:
+        now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        f.write(now + ':\n')
+        f.write('Train the sport classfiler completely.\n')
+
 
 
 

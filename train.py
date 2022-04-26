@@ -5,23 +5,38 @@ from sklearn import metrics
 import data
 import pickle
 import datetime
+import time
 
 
 # train the classifier
 def train(classifier_save_path='', datasets_path='./datasets/sport2.csv'):
     datas, target = data.get_datas(datasets_path)
-    print(type(datas), datas.shape)
-    print(type(target), target.shape)
+    # print(type(datas), datas.shape)
+    # print(type(target), target.shape)
 
     X_train, X_test, y_train, y_test = train_test_split(datas, target, test_size=0.3, random_state=104)
     # print(type(y_train), y_train.shape)
     # print(y_train)
     # print(y_test)
 
-    kernal = 'rbf'
+    # 选择核函数
+    # Kernel = ["linear", "poly", "rbf", "sigmoid"]
+    # for kernel in Kernel:
+    #     time0 = time.time()
+    #     clf = svm.SVC(kernel=kernel
+    #               , gamma="auto"
+    #               , degree=1
+    #               , cache_size=5000
+    #               ).fit(X_train, y_train)
+    #     print("The accuracy under kernel %s is %f" % (kernel, clf.score(X_test, y_test)))
+    #     print(datetime.datetime.fromtimestamp(time.time() - time0).strftime("%M:%S:%f"))
+
+
+    kernel = 'linear'
     # classifier = svm.SVC(kernel='rbf')
-    classifier = svm.SVC(C=8, kernel='rbf', gamma=1, decision_function_shape='ovo')
-    # classifier = svm.SVC(kernel='poly')
+    # classifier = svm.SVC(C=8, kernel='rbf', gamma=1, decision_function_shape='ovo')
+    classifier = svm.SVC(kernel="linear", gamma="auto", degree=1, cache_size=5000)
+
     classifier.fit(X_train, y_train)
 
     y_pred = classifier.predict(X_test)
@@ -36,7 +51,7 @@ def train(classifier_save_path='', datasets_path='./datasets/sport2.csv'):
         now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         f.write('\n' + now + ':\n')
         f.write('Train the sport classfiler completely.\n')
-        f.write('kernal: {}.\n'.format(kernal))
+        f.write('kernal: {}.\n'.format(kernel))
         f.write('Store in {}.\n'.format(classifier_save_path))
         f.write('Accuarcy: {}.\n'.format(metrics.accuracy_score(y_pred, y_test)))
         f.write('Precision: {}.\n'.format(metrics.precision_score(y_pred, y_test)))
@@ -63,4 +78,5 @@ def get_model(model_save_path):
 if __name__ == '__main__':
     datasets_path = './datasets/sport4.csv'
     classifier_save_path = './model/sport4.pickle'
-    train(classifier_save_path, datasets_path)
+    classifier_linear_save_path = './model/sport_linear.pickle'
+    train(classifier_linear_save_path, datasets_path)

@@ -23,9 +23,9 @@ def analyse():
 
     video_path = get_data['vpath']
 
-    tag = tagging.tag(video_path, model_path)
+    info = tagging.tag_with_info(video_path, model_path)
 
-    return_dict['result'] = tag.tolist()[0]
+    return_dict['result'] = info
 
     return json.dumps(return_dict, ensure_ascii=False)
 

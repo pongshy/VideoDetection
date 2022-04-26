@@ -208,3 +208,28 @@ Store in ./model/sport4.pickle.
 Accuarcy: 0.8571428571428571.
 Precision: 0.8181818181818182.
 Recall: 0.9473684210526315.
+
+2022-04-20 22:28:16:
+Train the sport classfiler completely.
+kernal: linear.
+Store in ./model/sport_linear.pickle.
+Accuarcy: 0.7714285714285715.
+Precision: 1.0.
+Recall: 0.7333333333333333.
+
+2022-04-20 22:34:28:
+Train the sport classfiler completely.
+kernal: linear.
+Store in ./model/sport_linear.pickle.
+Accuarcy: 0.7714285714285715.
+Precision: 1.0.
+Recall: 0.7333333333333333.
+
+
+2022-04-20 22:36:20:
+Train the sport classfiler completely.
+kernal: rbf.
+Store in ./model/sport4.pickle.
+Accuarcy: 0.8571428571428571.
+Precision: 0.8181818181818182.
+Recall: 0.9473684210526315.
